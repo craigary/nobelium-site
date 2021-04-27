@@ -1,36 +1,14 @@
 <template>
-  <!-- <ReadMe msg="Hello Vue 3 + Vite" /> -->
-  <div class="prose container mx-auto">
-  <article v-html="htmlForRender">
-  </article>
+  <div class="prose container mx-auto px-4 mt-8">
+    <Readme />
   </div>
 </template>
 
 <script>
-import marked from 'marked'
+import Readme from './README.md'
 export default {
-  mounted() {
-    this.getContent()
-  },
-  data() {
-    return {
-      content: '',
-      htmlForRender: ''
-    }
-  },
-  computed: {
-    htmlForRender() {
-      return marked(this.content)
-    }
-  },
-  methods: {
-    getContent() {
-      fetch(
-        'https://raw.githubusercontent.com/craigary/nobelium/main/README.md'
-      )
-        .then(res => res.text())
-        .then(res => (this.content = res))
-    }
+  components: {
+    Readme
   }
 }
 </script>
